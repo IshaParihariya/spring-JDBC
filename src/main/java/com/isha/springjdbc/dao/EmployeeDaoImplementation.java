@@ -31,7 +31,7 @@ public class EmployeeDaoImplementation implements IEmployeeDao
 
             PreparedStatement pstmnt=connection.prepareStatement(SQL_QUERY);
 
-            ResultSet rs=pstmnt.executeQuery();
+            ResultSet resultSet=pstmnt.executeQuery();
         }
         catch(Exception e)
         {
