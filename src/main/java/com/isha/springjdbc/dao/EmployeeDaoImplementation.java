@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository("dao")
@@ -24,6 +25,7 @@ public class EmployeeDaoImplementation implements IEmployeeDao
     @Override
     public List<Employee> getEmployeeInfo()
     {
+        List<Employee> employeeList = new ArrayList<>();
 
         try
         {
@@ -32,11 +34,22 @@ public class EmployeeDaoImplementation implements IEmployeeDao
             PreparedStatement pstmnt=connection.prepareStatement(SQL_QUERY);
 
             ResultSet resultSet=pstmnt.executeQuery();
+
+            while(resultSet.next())
+            {
+                Employee employee = new Employee();
+
+                employee.setId(resultSet.getInt("id"));
+                employee.setName(resultSet.getString("name"));
+                employee.setCity(resultSet.getString("salary"));
+
+                employeeList.add(employee);
+            }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
-        return null;
+        return employeeList;
     }
 }
