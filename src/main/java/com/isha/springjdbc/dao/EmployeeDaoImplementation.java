@@ -20,7 +20,7 @@ public class EmployeeDaoImplementation implements IEmployeeDao
     @Autowired
     private DataSource dataSource;
 
-    private String SQL_QUERY="SELECT * FROM Employees";
+    private String SQL_QUERY="SELECT * FROM Employee";
 
     @Override
     public List<Employee> getEmployeeInfo()
@@ -41,7 +41,7 @@ public class EmployeeDaoImplementation implements IEmployeeDao
 
                 employee.setId(resultSet.getInt("id"));
                 employee.setName(resultSet.getString("name"));
-                employee.setCity(resultSet.getString("salary"));
+                employee.setCity(resultSet.getString("city"));
 
                 employeeList.add(employee);
             }
